@@ -8,7 +8,6 @@ namespace ChallengeOne.Tests
     [TestClass]
     public class MenuTests
     {
-
         private MenuItem _newItem; // create a field of the menuItem object 
         private MenuItemRepository _repo;
 
@@ -25,12 +24,10 @@ namespace ChallengeOne.Tests
         {
             bool newItemAdded = _repo.AddMenuItems(_newItem);
 
-
             Assert.IsTrue(newItemAdded);
         }
 
         [TestMethod]
-
         public void GetMenuItems_ShouldReturnTrue()
         {
             _repo.AddMenuItems(_newItem);
@@ -43,18 +40,14 @@ namespace ChallengeOne.Tests
         }
 
         [TestMethod]
-
         public void GetMenuItemByMealNumber_ShouldReturnTrue()
         {
             MenuItem mealNumber = _repo.GetMenuItemByMealNumber(5);
 
             Assert.AreEqual(_newItem, mealNumber);
-
-
         }
 
         [TestMethod]
-
         public void RemoveItems()
         {
 
@@ -64,11 +57,5 @@ namespace ChallengeOne.Tests
             //assert
             Assert.IsTrue(wasDeleted);
         }
-
-
-
-
     }
-
-
 }

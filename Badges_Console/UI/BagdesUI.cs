@@ -63,19 +63,24 @@ namespace Badges_Console.UI
             List<string> newList = newDictionary[badgeToEdit];
             Console.WriteLine("Would you like to add or remove a door \n" + 
                 "1. Remove\n" +
-                "2. Add\n") ;
-            Console.WriteLine("Which string would you like to Remove");
-            foreach (string s in newList)
+                "2. Add\n");
+            int response = int.Parse(Console.ReadLine());
+            if(response == 1)
             {
-                Console.WriteLine($"{s}");
+                Console.WriteLine("Which string would you like to Remove");
+                foreach (string s in newList)
+                {
+                    Console.WriteLine($"{s}");
+                }
+                string tobeRemoved = Console.ReadLine().ToLower();
+                _badgeRepo.RemoveDoor(badgeToEdit, tobeRemoved);
             }
-            Console.WriteLine("Which string would you like to remove");
-            string toBeRemoved = Console.ReadLine();
-            newList.Remove(toBeRemoved);
-            Console.WriteLine("What door would you like to add");
-            string toBeAdded = Console.ReadLine();
-            newList.Add(toBeAdded);
-            newDictionary[badgeToEdit] = newList;
+            else if(response == 2)
+            {
+                Console.WriteLine("What door would you like to add");
+                string toBeAdded = Console.ReadLine().ToUpper();
+                _badgeRepo.AddDoor(badgeToEdit, toBeAdded);
+            }
         }
 
         public void CreateNewBadge()
